@@ -87,7 +87,8 @@ ul {
 /* End Components */
 /* Start Header */
 header {
-  position: absolute;
+  position: fixed;
+  background-color: #000020ad;
   left: 0;
   width: 100%;
   z-index: 6;
@@ -156,7 +157,7 @@ header nav ul a {
   position: relative;
   z-index: 2;
 }
-header nav ul a.active,
+.active,
 header nav ul a:hover {
   color: var(--mainColor);
   border-bottom: 1px solid var(--mainColor);
