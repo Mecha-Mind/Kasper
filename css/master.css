@@ -926,15 +926,23 @@ header nav .search i {
   padding: 15px;
   margin-bottom: 25px;
   border: 1px solid #ccc;
+  border-radius: 16px;
 }
 .contact .content form .main-inps:focus {
   outline: none;
 }
-.contact .content form textarea.main-inps {
-  height: 180px;
+
+.contact .content form textarea {
+  min-height: 180px;
+  resize: none;
 }
 .contact .content .info {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
   flex-basis: 25%;
+  text-align: center;
 }
 @media (max-width: 767px) {
   .contact .content .info {
