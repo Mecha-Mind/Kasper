@@ -1,12 +1,12 @@
-/* Start Vars */
+/* Start Variables */
 :root {
   --mainColor: #19c8fa;
   --transColor: rgb(15 116 143 / 70%);
   --section-padd: 100px;
 }
-/* End Vars */
+/* End Variables */
 /* Start Global Rulez */
-* {
+*, *::before, *::after {
   box-sizing: border-box;
   padding: 0;
   margin: 0;
@@ -24,19 +24,19 @@ ul {
   padding: 0 15px;
   margin: 0 auto;
 }
-/* Small */
+/* Small Screen*/
 @media (min-width: 768px) {
   .container {
     width: 750px;
   }
 }
-/* Medium */
+/* Medium Screen*/
 @media (min-width: 992px) {
   .container {
     width: 970px;
   }
 }
-/* Large */
+/* Large Screen*/
 @media (min-width: 1200px) {
   .container {
     width: 1170px;
@@ -82,7 +82,31 @@ ul {
   width: 550px;
   max-width: 100%;
   margin: 0 auto 90px;
-  font-size: 14px;
+  font-size: 15px;
+}
+
+.btn-up {
+  position: fixed;
+  bottom:30px;
+  right: 30px;
+  color: #f59494;
+  font-size: 32px;
+  z-index: 10000;
+  cursor: pointer;
+  transition: .2s;
+  display:none;
+  animation: btnUp 1s infinite alternate ;
+}
+@keyframes btnUp {
+  50%{
+    transform: translateY(-5px);
+  }
+  100%{
+    transform: translateY(5px);
+  }
+}
+.btn-up:hover {
+  color: rgb(204, 33, 33)
 }
 /* End Components */
 /* Start Header */
@@ -121,6 +145,7 @@ header nav {
 header nav .toggle-m {
   width: 20px;
   color: #fff;
+  font-size: 20px;
 }
 @media (min-width: 768px) {
   header nav .toggle-m {
@@ -152,12 +177,12 @@ header nav ul a {
   color: #fff;
   padding: 40px 15px;
   text-decoration: none;
-  font-size: 14px;
+  font-size: 16px;
   transition: 0.4s;
   position: relative;
   z-index: 2;
 }
-.active,
+header nav ul a.active,
 header nav ul a:hover {
   color: var(--mainColor);
   border-bottom: 1px solid var(--mainColor);
@@ -176,9 +201,10 @@ header nav .search i {
   top: 50%;
   transform: translateY(-50%);
   right: 0;
+  cursor: pointer;
 }
 /* End Header */
-/* Start LAnding  */
+/* Start Landing  */
 .landing {
   height: 100vh;
   background-color: #1f2021;
@@ -220,8 +246,15 @@ header nav .search i {
 .landing .text h2 {
   font-size: 30px;
   font-weight: normal;
-  line-height: 1.5;
+  line-height: 1.4;
   margin-bottom: 15px;
+}
+@media (max-width: 767px) {
+  .landing .text h2 {
+    font-size: 22px;
+    font-weight: bold;
+    line-height: 1.2;
+  }
 }
 .landing .text p {
   font-size: 14px;
@@ -238,6 +271,10 @@ header nav .search i {
     display: none;
   }
 }
+.landing .left,
+.landing .right {cursor: pointer; transition: .2s;}
+.landing .left:hover,
+.landing .right:hover {color: var(--mainColor);}
 .landing .left {
   left: 30px;
 }
@@ -257,6 +294,7 @@ header nav .search i {
   border: 1px solid #fff;
   border-radius: 50%;
   margin-right: 10px;
+  cursor: pointer;
 }
 .landing .bts li.active {
   background-color: var(--mainColor);
@@ -375,6 +413,10 @@ header nav .search i {
 }
 .portfolio .shuffle li {
   padding: 10px 15px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-weight: bold;
+  color: #3a3a3a;
 }
 .portfolio .shuffle li.active {
   background-color: var(--mainColor);
@@ -388,6 +430,7 @@ header nav .search i {
 .portfolio .porto-content .box {
   position: relative;
   overflow: hidden;
+  padding: 0 1px;
 }
 .portfolio .porto-content .box:hover img {
   transform: rotate(3deg) scale(1.1);
@@ -572,6 +615,11 @@ header nav .search i {
   flex-wrap: wrap;
   justify-content: space-between;
 }
+@media (max-width: 991px) {
+  .skills .container {
+    justify-content: center;
+  }
+}
 /* Start Editing Testimonial Side */
 @media (min-width: 992px) {
   .skills .container > div {
@@ -600,6 +648,9 @@ header nav .search i {
   align-items: center;
 }
 @media (max-width: 767px) {
+  .skills .container {
+    justify-content: center;
+  }
   .skills .our-testi .content {
     flex-direction: column;
     text-align: center;
@@ -798,11 +849,17 @@ header nav .search i {
 .pricing .plans .plan a {
   display: block;
   text-decoration: none;
-  font-size: bold;
-  border: 1px solid var(--mainColor);
+  border: 3px dotted var(--mainColor);
+  border-radius: 4px;
+  color: #000;
   padding: 10px 20px;
   width: fit-content;
   margin: 30px auto;
+  transition: .2s;
+}
+.pricing .plans .plan a:hover {
+  background-color: var(--mainColor);
+  color: #fff;
 }
 .pricing .c-text {
   font-size: 20px;
@@ -813,6 +870,7 @@ header nav .search i {
   display: block;
   width: fit-content;
   background-color: var(--transColor);
+  border-radius: 4px;
   color: #fff;
   padding: 10px 25px;
   margin: auto;
@@ -913,6 +971,7 @@ header nav .search i {
 }
 .contact form input[type="submit"] {
   border: none;
+  border-radius: 4px;
   background-color: var(--mainColor);
   color: #fff;
   padding: 10px;
