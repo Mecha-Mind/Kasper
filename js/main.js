@@ -1,26 +1,11 @@
-let links = document.querySelectorAll("#lnks a");
-let bullets = document.querySelectorAll(".bts li");
-let shuffles = document.querySelectorAll(".shuffle li");
-let btn_up = document.querySelector(".btn-up");
+const navLinks = document.querySelectorAll("#nav_links a");
+console.log(navLinks);
+const navToggle = document.querySelector("#nav_toggle");
+const shuffles = document.querySelectorAll(".shuffle li");
 
-// links.forEach((link) => {
-//   link.addEventListener("click", function () {
-//     links.forEach((btn) => btn.classList.remove("active"));
-//     this.classList.add("active");
-//   });
-// });
-// bullets.forEach((blt) => {
-//   blt.addEventListener("click", function () {
-//     bullets.forEach((btn) => btn.classList.remove("active"));
-//     this.classList.add("active");
-//   });
-// });
-// shuffles.forEach((shuffle) => {
-//   shuffle.addEventListener("click", function () {
-//     shuffles.forEach((btn) => btn.classList.remove("active"));
-//     this.classList.add("active");
-//   });
-// });
+const landing = document.querySelector(".landing");
+
+const bullets = document.querySelectorAll(".bts li");
 
 function activeLinks(links) {
   links.forEach((link) => {
@@ -31,21 +16,48 @@ function activeLinks(links) {
   });
 }
 
-activeLinks(links);
-activeLinks(bullets);
+activeLinks(navLinks);
 activeLinks(shuffles);
+activeLinks(bullets);
 
-window.onscroll = (_) => {
-  if (
-    document.body.scrollTop > 1160 ||
-    document.documentElement.scrollTop > 1160
-  ) {
-    btn_up.style.display = "block";
+const navMainLinks = document.querySelector("#nav_links");
+console.log(navMainLinks);
+
+navToggle.addEventListener("click", (_) => {
+  navMainLinks.classList.toggle("show");
+  navLinks.forEach((ele) => {
+    ele.addEventListener("click", (_) => {
+      navMainLinks.classList.remove("show");
+    });
+  });
+});
+
+// Show/hide scroll-to-top button
+const btnUp = document.querySelector("#btn_up");
+console.log(btnUp);
+
+window.addEventListener("scroll", () => {
+  if (document.documentElement.scrollTop > 1160) {
+    btnUp.style.display = "flex";
   } else {
-    btn_up.style.display = "none";
+    btnUp.style.display = "none";
   }
-};
-btn_up.addEventListener("click", (_) => {
-  document.body.scrollTop = 0; //For Safari
-  document.documentElement.scrollTop = 0; //For Chrome, Firefox, IE & Opera
+});
+
+// Scroll to top when button is clicked
+btnUp.addEventListener("click", () => {
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+
+// Update scroll progress bar width
+const scroller = document.querySelector("#scroller");
+console.log(scroller);
+
+window.addEventListener("scroll", () => {
+  const height =
+    document.documentElement.scrollHeight -
+    document.documentElement.clientHeight;
+  const scrollTop = document.documentElement.scrollTop;
+  const scrollWidth = (scrollTop / height) * 100;
+  scroller.style.width = `${scrollWidth}%`;
 });

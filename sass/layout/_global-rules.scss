@@ -1,0 +1,41 @@
+// Import media screen variables
+@use '../variables/media';
+
+/* Start Global Rulez */
+*, *::before, *::after {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+html {
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Open Sans", sans-serif;
+}
+ul {
+  list-style: none;
+}
+.container {
+  padding: 0 15px;
+  margin: 0 auto;
+}
+/* Small Screen*/
+@media ($small_screen) {
+  .container {
+    width: 750px;
+  }
+}
+/* Medium Screen*/
+@media ($medium_screen) {
+  .container {
+    width: 970px;
+  }
+}
+/* Large Screen*/
+@media ($large_screen) {
+  .container {
+    width: 1170px;
+  }
+}
+/* End Global Rulez */

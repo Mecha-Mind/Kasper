@@ -1,0 +1,20 @@
+// Import global rules
+@use './sass/layout/global-rules';
+
+
+
+// Import Pages
+@use './sass/pages/header';
+@use './sass/pages/landing';
+@use './sass/pages/services';
+@use './sass/pages/design';
+@use './sass/pages/portfolio';
+@use './sass/pages/video';
+@use './sass/pages/about';
+@use './sass/pages/states';
+@use './sass/pages/skills';
+@use './sass/pages/quotes';
+@use './sass/pages/pricing';
+@use './sass/pages/subscribe';
+@use './sass/pages/contact';
+@use './sass/pages/footer';

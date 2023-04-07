@@ -3,6 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta
+      name="description"
+      content="Hello, this is kasper landing page made by 'Hani abdallah'"
+    />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>| Kasper |</title>
     <!-- For Smooth Css Reset -->
@@ -21,14 +25,15 @@
   </head>
   <body>
     <!-- Start Header Section -->
+    <div id="scroller"></div>
     <header>
       <div class="container">
         <a href="" class="logo">
           <img src="images/revit.png" alt="Logo" />
         </a>
         <nav>
-          <i class="fas fa-bars toggle-m"></i>
-          <ul id="lnks">
+          <i class="fas fa-bars" id="nav_toggle"></i>
+          <ul id="nav_links">
             <li><a href="#" class="active">Home</a></li>
             <li><a href="#srv">Services</a></li>
             <li><a href="#porto">Portofolio</a></li>
@@ -43,7 +48,7 @@
       </div>
     </header>
     <!-- End Header -->
-    <i class="fas fa-angle-double-up btn-up"></i>
+    <i class="fas fa-angle-double-up" id="btn_up"></i>
     <!-- Start Landing -->
     <section class="landing">
       <div class="overlay"></div>
@@ -471,7 +476,7 @@
     <!-- Start Footer -->
     <footer>
       <div class="container">
-        <img src="./images/revit.png" alt="Logo" />
+        <!-- <img src="./images/revit.png" alt="Logo" /> -->
         <p>We Are Social</p>
         <div class="socials">
           <i class="fab fa-twitter fa-lg tw"></i>

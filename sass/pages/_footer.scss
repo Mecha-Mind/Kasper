@@ -1,0 +1,72 @@
+/* Start Footer */
+footer {
+  padding-top: calc(var(--section-padd) / 2);
+  padding-bottom: calc(var(--section-padd) / 2);
+  background-image: url(../images/b2/shuffle01.jpg);
+  background-size: cover;
+  color: #fff;
+  position: relative;
+  text-align: center;
+  &::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgb(0 0 0 / 70%);
+  }
+  .container {
+    position: relative;
+  }
+  img {
+    height: 34px;
+    margin-bottom: 20px;
+  }
+  p:not(.copyr) {
+    text-transform: uppercase;
+    font-size: 20px;
+    border-bottom: 1px solid #7a7878;
+    padding: 20px;
+    margin: 20px auto;
+    width: fit-content;
+  }
+  .socials {
+    i {
+      margin-left: 10px;
+      padding: 10px 15px;
+      text-align: center;
+      transition: 0.6s;
+    }
+    .tw:hover {
+      color: #1da1f2;
+      transform: rotate(360deg) skew(2deg) scale(1.6);
+    }
+    .fb:hover {
+      color: #1877f2;
+      transform: rotate(360deg) skew(2deg) scale(1.6);
+    }
+    .yt:hover {
+      color: #cd201f;
+      transform: rotate(360deg) skew(2deg) scale(1.6);
+    }
+    .lk:hover {
+      color: #0a66c2;
+      transform: rotate(360deg) skew(2deg) scale(1.6);
+    }
+  }
+  .copyr {
+    margin-top: 60px;
+    span {
+      color: var(--mainColor);
+    }
+  }
+}
+
+@media (max-width: 767px) {
+  footer .copyr {
+    font-size: 14px;
+  }
+}
+
+/* End Footer */

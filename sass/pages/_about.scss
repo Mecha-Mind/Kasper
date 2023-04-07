@@ -1,0 +1,19 @@
+/* Start About */
+.about {
+  padding-top: var(--section-padd);
+  overflow: hidden;
+  img {
+    position: relative;
+    bottom: -200px;
+    margin-top: -200px;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .about img {
+    bottom: -50px;
+    margin-top: -50px;
+  }
+}
+/* End About */

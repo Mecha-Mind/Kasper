@@ -1,0 +1,142 @@
+/* Start Skills */
+.skills {
+  padding-top: var(--section-padd);
+  padding-bottom: var(--section-padd);
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    > div {
+      margin-bottom: 40px;
+      > h3 {
+        font-weight: normal;
+        margin: 0 0 30px;
+        text-transform: uppercase;
+        text-align: center;
+      }
+      > p {
+        color: #777;
+        margin: 0 0 50px;
+        font-size: 14px;
+        text-align: center;
+        line-height: 1.8;
+      }
+    }
+  }
+  .skill {
+    margin: 40px 0;
+    border-radius: 14px;
+    h4 {
+      font-weight: normal;
+      margin: 10px 0;
+    }
+    .prog {
+      background-color: #8a8a8a;
+      height: 35px;
+      display: flex;
+      border-radius: 7px;
+      span {
+        position: relative;
+        background-color: var(--mainColor);
+        height: 100%;
+        &::before {
+          content: attr(data-progress);
+          position: absolute;
+          top: -35px;
+          right: -15px;
+          background-color: #000;
+          color: #fff;
+          width: 38px;
+          padding: 5px 0;
+          text-align: center;
+          border-radius: 4px;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          content: "";
+          position: absolute;
+          border: 8px solid;
+          border-color: #000 transparent transparent;
+          right: -5px;
+          top: -10px;
+        }
+      }
+    }
+  }
+  .our-testi {
+    .content {
+      margin-bottom: 40px;
+      display: flex;
+      align-items: center;
+      img {
+        width: 100px;
+      }
+      .text {
+        border-bottom: 1px solid #ddd;
+        line-height: 1.8;
+        p {
+          font-size: 14px;
+          text-align: right;
+          margin: 10px 0 20px;
+          color: #7a7878;
+        }
+      }
+    }
+    .bullets {
+      display: flex;
+      justify-content: center;
+      margin: 50px 0;
+      li {
+        width: 15px;
+        height: 15px;
+        border: 1px solid #ccc;
+        border-radius: 50%;
+        margin-right: 10px;
+        &.active {
+          background-color: var(--mainColor);
+          border-color: var(--mainColor);
+        }
+      }
+    }
+  }
+
+}
+
+@media (max-width: 991px) {
+  .skills .container {
+    justify-content: center;
+  }
+}
+
+/* Start Editing Testimonial Side */
+@media (min-width: 992px) {
+  .skills .container > div {
+    flex-basis: 45%;
+  }
+}
+
+
+@media (max-width: 767px) {
+  .skills .container {
+    justify-content: center;
+  }
+  .skills .our-testi .content {
+    flex-direction: column;
+    text-align: center;
+  }
+  .skills .our-testi {
+    position: relative;
+  }
+  .skills .our-testi .content img {
+    margin: 0 auto 20px;
+  }
+}
+
+/* End Editing Testimonial Side */
+
+/* Start Editing Skills Side */
+
+
+/* End Editing Skills Side */
+/* End Skills */

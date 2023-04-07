@@ -1,0 +1,75 @@
+/* Start Subs */
+.subs {
+  padding-top: var(--section-padd);
+  padding-bottom: var(--section-padd);
+  background-image: url(../images/subs.jpg);
+  background-size: cover;
+  color: #fff;
+  position: relative;
+  text-align: center;
+  .container {
+    display: flex;
+    align-items: center;
+  }
+  form {
+    position: relative;
+    width: 500px;
+    max-width: 100%;
+    display: flex;
+    i {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      left: 20px;
+    }
+    input[type="email"] {
+      background-color: #333;
+      border: 1px solid #fff;
+      border-right: none;
+      padding: 20px 20px 20px 60px;
+      caret-color: var(--mainColor);
+      color: #fff;
+      width: calc(100% - 120px);
+      &::placeholder {
+        color: #fff;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+    input[type="submit"] {
+      border: 1px solid #fff;
+      border-left: none;
+      background-color: var(--mainColor);
+      padding: 15px;
+      cursor: pointer;
+      transition: 0.6s;
+      width: 120px;
+      &:hover {
+        background-color: var(--transColor);
+        color: #fff;
+      }
+      &:focus {
+        outline: none;
+      }
+    }
+  }
+  p {
+    line-height: 2;
+    margin-left: 30px;
+  }
+}
+
+@media (max-width: 991px) {
+  .subs .container {
+    flex-direction: column;
+  }
+}
+
+
+@media (max-width: 991px) {
+  .subs p {
+    margin-top: 30px;
+  }
+}
+/* End Subs */
