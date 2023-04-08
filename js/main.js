@@ -13,6 +13,7 @@ const leftBtn = document.querySelector(".left");
 const rightBtn = document.querySelector(".right");
 const searchIcon = document.querySelector("#search_icon");
 const searchInput = document.querySelector("#search_input");
+const skillsBullets = document.querySelectorAll(".skills li");
 
 // toggle on click search icon
 searchIcon.addEventListener("click", () => {
@@ -99,3 +100,4 @@ bullets[currentImage].classList.add("active");
 setActiveLink(navLinks);
 setActiveLink(shuffles);
 setActiveLink(bullets);
+setActiveLink(skillsBullets);

@@ -830,6 +830,7 @@ header nav #search_input.show {
   border: 1px solid #ccc;
   border-radius: 50%;
   margin-right: 10px;
+  cursor: pointer;
 }
 .skills .our-testi .bullets li.active {
   background-color: var(--mainColor);
