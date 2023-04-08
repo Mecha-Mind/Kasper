@@ -570,12 +570,19 @@ header nav #search_input.show {
   margin-top: 50px;
   display: flex;
   flex-wrap: wrap;
+  min-height: 356.6px;
 }
 .portfolio .porto-content .box {
   position: relative;
   overflow: hidden;
   padding: 0 1px;
+  transition: 1.3s ease;
+  
 }
+/* .portfolio .porto-content .box.hide {
+  display: none;
+  transform: scale(0);
+} */
 .portfolio .porto-content .box:hover img {
   transform: rotate(3deg) scale(1.1);
 }

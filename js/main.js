@@ -3,6 +3,7 @@ const navMainLinks = document.querySelector("#nav_links");
 const navLinks = document.querySelectorAll("#nav_links a");
 const navToggle = document.querySelector("#nav_toggle");
 const shuffles = document.querySelectorAll(".shuffle li");
+const boxes = document.querySelectorAll("#porto .box");
 const landing = document.querySelector(".landing");
 const bullets = document.querySelectorAll(".bts li");
 const btnScrollToTop = document.querySelector("#btn_up");
@@ -18,6 +19,26 @@ const skillsBullets = document.querySelectorAll(".skills li");
 // toggle on click search icon
 searchIcon.addEventListener("click", () => {
   searchInput.classList.toggle("show");
+});
+
+// Filter boxes based on category
+shuffles.forEach((button) => {
+  button.addEventListener("click", (_) => {
+    const category = button.textContent.toLowerCase();
+    console.log(category);
+    boxes.forEach((box) => {
+      if (
+        category === "all" ||
+        box.getAttribute("data-category") === category
+      ) {
+        box.style.opacity = "1";
+        box.style.display = "block";
+      } else {
+        box.style.opacity = "0";
+        box.style.display = "none";
+      }
+    });
+  });
 });
 
 // Add active class to clicked links
