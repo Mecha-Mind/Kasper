@@ -1,5 +1,6 @@
 // Select elements
 const navMainLinks = document.querySelector("#nav_links");
+// Get all the nav links
 const navLinks = document.querySelectorAll("#nav_links a");
 const navToggle = document.querySelector("#nav_toggle");
 const shuffles = document.querySelectorAll(".shuffle li");
@@ -21,7 +22,39 @@ searchIcon.addEventListener("click", () => {
   searchInput.classList.toggle("show");
 });
 
-// Filter boxes based on category
+// Define the offset value for the sections
+const offset = 100;
+
+// Add a scroll event listener on the window object
+window.addEventListener("scroll", () => {
+  // Get the current scroll position
+  const currentScrollPos = window.scrollY;
+
+  // Loop through the nav links
+  navLinks.forEach((link) => {
+    // Get the corresponding section based on the link's href attribute
+    const section = document.querySelector(link.getAttribute("href"));
+
+    // Get the height of the section
+    const sectionHeight = section.offsetHeight;
+
+    // Get the distance of the section from the top of the page
+    const sectionTop = section.offsetTop;
+
+    // Check if the current scroll position is within the section
+    if (
+      currentScrollPos >= sectionTop - offset &&
+      currentScrollPos < sectionTop + sectionHeight - offset
+    ) {
+      // Add the active class to the corresponding nav link
+      link.classList.add("active");
+    } else {
+      // Remove the active class from the nav link
+      link.classList.remove("active");
+    }
+  });
+});
+// Filter boxes based on category - Portfolio section
 shuffles.forEach((button) => {
   button.addEventListener("click", (_) => {
     const category = button.textContent.toLowerCase();
@@ -31,10 +64,8 @@ shuffles.forEach((button) => {
         category === "all" ||
         box.getAttribute("data-category") === category
       ) {
-        box.style.opacity = "1";
         box.style.display = "block";
       } else {
-        box.style.opacity = "0";
         box.style.display = "none";
       }
     });
@@ -123,28 +154,46 @@ setActiveLink(shuffles);
 setActiveLink(bullets);
 setActiveLink(skillsBullets);
 
-window.onload = function () {
-  // Initially show the first quote
-  document
-    .querySelector(".quote-slider .container:first-child")
-    .classList.add("active");
+// Define quote slider module
+const quoteSlider = (function () {
+  // Private variables and functions --'local scope'
+  let currentQuote = 0;
+  const quotes = document.querySelectorAll(".quote-slider .container");
 
-  // Start the quote slider
-  setInterval(function () {
-    // Find the currently active quote
-    var activeQuote = document.querySelector(".quote-slider .container.active");
+  const showQuote = (index) => {
+    quotes[currentQuote].classList.remove("active");
+    currentQuote = index;
+    quotes[currentQuote].classList.add("active");
+  };
 
-    // Check if there's a next quote
-    if (activeQuote.nextElementSibling) {
-      // If there is, make it active
-      activeQuote.classList.remove("active");
-      activeQuote.nextElementSibling.classList.add("active");
-    } else {
-      // If there isn't, go back to the first quote
-      activeQuote.classList.remove("active");
-      document
-        .querySelector(".quote-slider .container:first-child")
-        .classList.add("active");
-    }
-  }, 5000); // Change quote every 5 seconds
-};
+  // Public function to start the quote slider
+  const startSlider = () => {
+    // Initially show the first quote
+    quotes[currentQuote].classList.add("active");
+
+    // Start the quote slider
+    setInterval(() => {
+      // Find the currently active quote
+      const activeQuote = document.querySelector(
+        ".quote-slider .container.active"
+      );
+
+      // Check if there's a next quote
+      if (activeQuote.nextElementSibling) {
+        // If there is, make it active
+        showQuote(currentQuote + 1);
+      } else {
+        // If there isn't, go back to the first quote
+        showQuote(0);
+      }
+    }, 2000); // Change quote every 3 seconds
+  };
+
+  // Return public functions
+  return {
+    startSlider,
+  };
+})();
+
+// Start the quote slider
+quoteSlider.startSlider();
