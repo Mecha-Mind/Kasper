@@ -122,3 +122,29 @@ setActiveLink(navLinks);
 setActiveLink(shuffles);
 setActiveLink(bullets);
 setActiveLink(skillsBullets);
+
+window.onload = function () {
+  // Initially show the first quote
+  document
+    .querySelector(".quote-slider .container:first-child")
+    .classList.add("active");
+
+  // Start the quote slider
+  setInterval(function () {
+    // Find the currently active quote
+    var activeQuote = document.querySelector(".quote-slider .container.active");
+
+    // Check if there's a next quote
+    if (activeQuote.nextElementSibling) {
+      // If there is, make it active
+      activeQuote.classList.remove("active");
+      activeQuote.nextElementSibling.classList.add("active");
+    } else {
+      // If there isn't, go back to the first quote
+      activeQuote.classList.remove("active");
+      document
+        .querySelector(".quote-slider .container:first-child")
+        .classList.add("active");
+    }
+  }, 5000); // Change quote every 5 seconds
+};

@@ -888,8 +888,9 @@ header nav #search_input.show {
 }
 /* End Editing Skills Side */
 /* End Skills */
+
 /* Start Quote */
-.quote {
+.quote-slider {
   padding-top: var(--section-padd);
   padding-bottom: var(--section-padd);
   background-image: url(../images/q.jpg);
@@ -898,7 +899,7 @@ header nav #search_input.show {
   position: relative;
   text-align: center;
 }
-.quote::before {
+.quote-slider::before {
   content: "";
   position: absolute;
   width: 100%;
@@ -907,17 +908,21 @@ header nav #search_input.show {
   left: 0;
   background-color: rgb(0 0 0 / 70%);
 }
-.quote .container {
+.quote-slider .container {
+  display: none; /* Hide all quotes initially */
   position: relative;
   background-color: var(--transColor);
   padding: 40px;
 }
-.quote q {
+.quote-slider .container.active {
+  display: block; /* Show only the active quote */
+}
+.quote-slider q {
   font-size: 25px;
   display: block;
   margin-bottom: 20px;
 }
-.quote q::before {
+.quote-slider q::before {
   content: "\f10d";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
@@ -927,7 +932,7 @@ header nav #search_input.show {
   top: -10px;
   position: relative;
 }
-.quote q::after {
+.quote-slider q::after {
   content: "\f10e";
   font-family: "Font Awesome 5 Free";
   font-weight: 900;
