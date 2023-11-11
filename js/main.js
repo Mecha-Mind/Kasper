@@ -17,6 +17,10 @@ const searchIcon = document.querySelector("#search_icon");
 const searchInput = document.querySelector("#search_input");
 const skillsBullets = document.querySelectorAll(".skills li");
 
+// Create manual footer pure js
+
+document.creat;
+
 // toggle on click search icon
 searchIcon.addEventListener("click", () => {
   searchInput.classList.toggle("show");
@@ -37,7 +41,6 @@ window.addEventListener("scroll", () => {
 
     // Get the height of the section
     const sectionHeight = section.offsetHeight;
-
     // Get the distance of the section from the top of the page
     const sectionTop = section.offsetTop;
 
@@ -58,7 +61,6 @@ window.addEventListener("scroll", () => {
 shuffles.forEach((button) => {
   button.addEventListener("click", (_) => {
     const category = button.textContent.toLowerCase();
-    console.log(category);
     boxes.forEach((box) => {
       if (
         category === "all" ||
