@@ -4,22 +4,87 @@ const navMainLinks = document.querySelector("#nav_links");
 const navLinks = document.querySelectorAll("#nav_links a");
 const navToggle = document.querySelector("#nav_toggle");
 const shuffles = document.querySelectorAll(".shuffle li");
-const boxes = document.querySelectorAll("#porto .box");
-const landing = document.querySelector(".landing");
-const bullets = document.querySelectorAll(".bts li");
+const boxes = document.querySelectorAll("#portfolio .box");
+
 const btnScrollToTop = document.querySelector("#btn_up");
 const progressScroller = document.querySelector("#scroller");
+
 const slider = document.querySelector(".image-slider");
-const images = document.querySelectorAll(".image-slider img");
-const leftBtn = document.querySelector(".left");
-const rightBtn = document.querySelector(".right");
+// const images = document.querySelectorAll(".image-slider img");
+
 const searchIcon = document.querySelector("#search_icon");
 const searchInput = document.querySelector("#search_input");
 const skillsBullets = document.querySelectorAll(".skills li");
 
-// Create manual footer pure js
+const slides = [
+  {
+    src: "./images/owl.jpg",
+    title: `Hello, We're Diamond Night, we make art.`,
+    description: "For business management services in Dubai and the Gulf.",
+  },
+  {
+    src: "./images/abstract2.jpg",
+    title: "Empowering Your Business",
+    description: "Professional support and strategies tailored to your needs.",
+  },
+  {
+    src: "./images/abstract.jpg",
+    title: "Your Partner for Success",
+    description: "Join hands with us for a brighter future in business.",
+  },
+];
 
-document.creat;
+const sliderImage = document.getElementById("slider-image");
+const slideTitle = document.getElementById("slide-title");
+const slideDescription = document.getElementById("slide-description");
+const prevButton = document.getElementById("prev-arrow");
+const nextButton = document.getElementById("next-arrow");
+
+let currentIndex = 0;
+
+const bulletsContainer = document.querySelector(".bullets");
+slides.forEach((_, index) => {
+  const bullet = document.createElement("li");
+  bullet.addEventListener("click", () => updateImage(index));
+  bulletsContainer.appendChild(bullet);
+});
+
+const bullets = document.querySelectorAll(".bullets li");
+
+const updateImage = (index) => {
+  // إزالة الإعدادات القديمة من العناصر السابقة
+  bullets[currentIndex].classList.remove("active");
+
+  // تحديث currentIndex إلى الفهرس الجديد
+  currentIndex = index;
+
+  // تغيير الصورة والنصوص بناءً على الشريحة الجديدة
+  sliderImage.src = slides[currentIndex].src;
+  slideTitle.innerText = slides[currentIndex].title;
+  slideDescription.innerText = slides[currentIndex].description;
+
+  // إضافة كلاس "active" للـ bullet الحالية
+  bullets[currentIndex].classList.add("active");
+
+  // تعطيل الأزرار في أول أو آخر صورة
+  nextButton.disabled = currentIndex === slides.length - 1;
+  prevButton.disabled = currentIndex === 0;
+};
+
+nextButton.addEventListener("click", () => {
+  if (currentIndex < slides.length - 1) {
+    updateImage(currentIndex + 1);
+  }
+});
+
+prevButton.addEventListener("click", () => {
+  if (currentIndex > 0) {
+    updateImage(currentIndex - 1);
+  }
+});
+
+// تهيئة العرض الأول
+updateImage(0);
 
 // toggle on click search icon
 searchIcon.addEventListener("click", () => {
@@ -66,9 +131,15 @@ shuffles.forEach((button) => {
         category === "all" ||
         box.getAttribute("data-category") === category
       ) {
-        box.style.display = "block";
+        box.classList.remove("hidden");
+        setTimeout(() => {
+          box.style.display = "block";
+        }, 200); // زمن التأثير يساوي زمن transition
       } else {
-        box.style.display = "none";
+        box.classList.add("hidden");
+        setTimeout(() => {
+          box.style.display = "none";
+        }, 10); // زمن التأثير
       }
     });
   });
@@ -116,39 +187,6 @@ window.addEventListener("scroll", () => {
   const scrollWidth = (scrollTop / scrollHeight) * 100;
   progressScroller.style.width = `${scrollWidth}%`;
 });
-
-// Image slider functionality
-let currentImage = 0;
-
-const showImage = (index) => {
-  images[currentImage].style.display = "none";
-  bullets[currentImage].classList.remove("active");
-  currentImage = index;
-  images[currentImage].style.display = "block";
-  bullets[currentImage].classList.add("active");
-};
-
-leftBtn.addEventListener("click", () => {
-  const lastIndex = images.length - 1;
-  const newIndex = currentImage === 0 ? lastIndex : currentImage - 1;
-  showImage(newIndex);
-});
-
-rightBtn.addEventListener("click", () => {
-  const lastIndex = images.length - 1;
-  const newIndex = currentImage === lastIndex ? 0 : currentImage + 1;
-  showImage(newIndex);
-});
-
-bullets.forEach((bullet, index) => {
-  bullet.addEventListener("click", () => {
-    showImage(index);
-  });
-});
-
-// Initialize slider
-images[currentImage].style.display = "block";
-bullets[currentImage].classList.add("active");
 
 // Initialize functionality for links
 setActiveLink(navLinks);
